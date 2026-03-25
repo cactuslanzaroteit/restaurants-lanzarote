@@ -1,0 +1,50 @@
+[
+  {
+    "id": "el-mar-arrieta",
+    "name": "El Mar",
+    "owner_name": "José Pérez",
+    "category": "Seafood",
+    "vibe": "Coastal Minimalist",
+    "location": "Arrieta, Lanzarote",
+    "status": "old",
+    "rating_food": 9,
+    "rating_web": 3,
+    "contact": {
+      "website": "https://example.com/el-mar",
+      "phone": "+34 928 000 000",
+      "email": "info@elmararrieta.com"
+    },
+    "images": {
+      "hero": "/images/mock-hero-1.jpg",
+      "gallery": []
+    },
+    "content": {
+      "story": "A family-run establishment serving the freshest catch from the Atlantic.",
+      "ambiance": "Clean lines, whitewashed walls, and the sound of the ocean as your soundtrack."
+    }
+  },
+  {
+    "id": "volcan-grill",
+    "name": "Volcán Grill",
+    "owner_name": "Ana Cabrera",
+    "category": "Mediterranean",
+    "vibe": "Volcanic Chic",
+    "location": "Timanfaya",
+    "status": "new",
+    "rating_food": 8,
+    "rating_web": 8,
+    "contact": {
+      "website": "https://volcangrill.com",
+      "phone": "+34 928 111 111",
+      "email": "hello@volcangrill.com"
+    },
+    "images": {
+      "hero": "/images/mock-hero-2.jpg",
+      "gallery": []
+    },
+    "content": {
+      "story": "Dining atop a sea of lava, where the heat comes direct from the earth.",
+      "ambiance": "Architectural masterpiece by César Manrique, blending nature and luxury."
+    }
+  }
+]
