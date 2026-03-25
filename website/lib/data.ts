@@ -291,6 +291,297 @@ export const restaurants: Restaurant[] = [
       saves: 45,
     },
   },
+  
+  {
+    id: 'mirador-del-rio',
+    slug: 'mirador-del-rio',
+    name: 'Mirador del Río',
+    tagline: 'Cliff-top dining with panoramic views',
+    description: 'Spectacular restaurant perched on cliffs with 360-degree views of the ocean and neighboring islands.',
+    story: 'Built into the cliffs at 479 meters above sea level, Mirador del Río offers breathtaking views of the Chinijo Archipelago. Designed by César Manrique, it blends seamlessly with the volcanic landscape.',
+    
+    contact: {
+      address: 'Carretera del Risco, 35541 Haría, Las Palmas',
+      coordinates: { lat: 29.201, lng: -13.496 },
+      phone: '+34 928 52 65 36',
+      website: 'https://www.miradordelrio.com',
+      email: 'info@miradordelrio.com',
+    },
+    
+    details: {
+      cuisine: ['Mediterranean', 'Seafood', 'Fine Dining', 'Canarian'],
+      priceRange: '€€€ (High)',
+      ambiance: ['Scenic Views', 'Romantic', 'Luxury', 'Architectural'],
+      features: ['Cliff-top Location', 'Panoramic Views', 'César Manrique Design', 'Sunset Views'],
+      dietary: ['Vegetarian Options', 'Gluten-Free Options'],
+      capacity: 90,
+      parking: true,
+      wifi: true,
+      terrace: true,
+      heating: true,
+      ac: true,
+    },
+    
+    hours: {
+      monday: '10:00-17:45',
+      tuesday: '10:00-17:45',
+      wednesday: '10:00-17:45',
+      thursday: '10:00-17:45',
+      friday: '10:00-17:45',
+      saturday: '10:00-17:45',
+      sunday: '10:00-17:45',
+      notes: 'Last entry 45 minutes before closing, restaurant service 12:00-16:00',
+    },
+    
+    media: {
+      coverImage: 'https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=1200&q=80',
+      gallery: [
+        'https://images.unsplash.com/photo-1559925393-8be0ec4767c8?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1578474846511-04ba529f0b88?auto=format&fit=crop&w=800&q=80',
+      ],
+    },
+    
+    curation: {
+      editorRating: 9.4,
+      editorNotes: 'The views alone are worth the visit. Combine with the architectural genius of César Manrique for an unforgettable experience.',
+      perfectFor: ['Special Occasion', 'Photography', 'Architecture Lovers', 'Sunset Dining'],
+      awards: ['Best View in Lanzarote', 'Architectural Award'],
+      featured: true,
+      featuredUntil: '2026-08-31',
+    },
+    
+    seo: {
+      metaTitle: 'Mirador del Río - Cliff-top Dining with Panoramic Views',
+      metaDescription: 'Experience breathtaking cliff-top dining at Mirador del Río with 360-degree views of the Chinijo Archipelago.',
+      keywords: ['cliff-top restaurant', 'panoramic views', 'César Manrique', 'Lanzarote views'],
+      ogImage: 'https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=1200&q=80',
+    },
+    
+    metadata: {
+      createdAt: '2026-03-25T10:00:00Z',
+      updatedAt: '2026-03-25T10:00:00Z',
+      published: true,
+      views: 1103,
+      saves: 78,
+    },
+  },
+  
+  {
+    id: 'el-novo',
+    slug: 'el-novo',
+    name: 'El Novo',
+    tagline: 'Modern Canarian fusion cuisine',
+    description: 'Innovative restaurant blending traditional Canarian ingredients with contemporary techniques and presentation.',
+    
+    contact: {
+      address: 'Avenida de las Playas, 78, 35510 Puerto del Carmen, Las Palmas',
+      coordinates: { lat: 28.923, lng: -13.667 },
+      phone: '+34 928 51 23 45',
+      website: 'https://www.elnovo-lanzarote.com',
+      email: 'reservations@elnovo-lanzarote.com',
+    },
+    
+    details: {
+      cuisine: ['Fusion', 'Modern', 'Creative', 'Canarian'],
+      priceRange: '€€€ (High)',
+      ambiance: ['Modern', 'Sophisticated', 'Trendy', 'Fine Dining'],
+      features: ['Creative Cuisine', 'Wine Pairings', 'Chef\'s Table', 'Seasonal Menu'],
+      dietary: ['Vegetarian Options', 'Vegan Menu', 'Gluten-Free Options'],
+      capacity: 60,
+      parking: true,
+      wifi: true,
+      terrace: true,
+      heating: true,
+      ac: true,
+    },
+    
+    hours: {
+      monday: '19:00-23:00',
+      tuesday: '19:00-23:00',
+      wednesday: '19:00-23:00',
+      thursday: '19:00-23:00',
+      friday: '19:00-00:00',
+      saturday: '19:00-00:00',
+      sunday: 'Closed',
+      notes: 'Reservations required, tasting menu available',
+    },
+    
+    media: {
+      coverImage: 'https://images.unsplash.com/photo-1578474846511-04ba529f0b88?auto=format&fit=crop&w=1200&q=80',
+      gallery: [
+        'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=800&q=80',
+      ],
+    },
+    
+    curation: {
+      editorRating: 8.5,
+      editorNotes: 'For those seeking innovative cuisine that respects local ingredients while pushing boundaries.',
+      perfectFor: ['Foodies', 'Special Occasion', 'Modern Dining', 'Wine Enthusiasts'],
+      awards: ['Innovative Cuisine Award 2023'],
+      featured: false,
+    },
+    
+    seo: {
+      metaTitle: 'El Novo - Modern Canarian Fusion in Puerto del Carmen',
+      metaDescription: 'Experience innovative Canarian fusion cuisine at El Novo, where tradition meets contemporary techniques.',
+      keywords: ['fusion cuisine', 'modern dining', 'creative cooking', 'Puerto del Carmen'],
+      ogImage: 'https://images.unsplash.com/photo-1578474846511-04ba529f0b88?auto=format&fit=crop&w=1200&q=80',
+    },
+    
+    metadata: {
+      createdAt: '2026-03-25T11:00:00Z',
+      updatedAt: '2026-03-25T11:00:00Z',
+      published: true,
+      views: 645,
+      saves: 32,
+    },
+  },
+  
+  {
+    id: 'la-cueva',
+    slug: 'la-cueva',
+    name: 'La Cueva',
+    tagline: 'Dining in a volcanic cave',
+    description: 'Unique restaurant built inside a natural volcanic cave, offering an unforgettable dining experience.',
+    
+    contact: {
+      address: 'Jameos del Agua, Carretera de Órzola, 35542 Haría, Las Palmas',
+      coordinates: { lat: 29.157, lng: -13.432 },
+      phone: '+34 928 84 80 20',
+      website: 'https://www.cactlanzarote.com',
+      email: 'jameos@cactlanzarote.com',
+    },
+    
+    details: {
+      cuisine: ['Canarian', 'Seafood', 'Unique Experience'],
+      priceRange: '€€€ (High)',
+      ambiance: ['Unique Experience', 'Romantic', 'Adventure', 'Natural'],
+      features: ['Volcanic Cave', 'Natural Acoustics', 'Jameos del Agua Location', 'Cultural Experience'],
+      dietary: ['Vegetarian Options'],
+      capacity: 50,
+      parking: true,
+      wifi: false,
+      terrace: false,
+      heating: true,
+      ac: false,
+    },
+    
+    hours: {
+      monday: '19:00-23:00',
+      tuesday: '19:00-23:00',
+      wednesday: '19:00-23:00',
+      thursday: '19:00-23:00',
+      friday: '19:00-23:00',
+      saturday: '19:00-23:00',
+      sunday: '19:00-23:00',
+      notes: 'Part of Jameos del Agua tourist attraction, entry fee applies',
+    },
+    
+    media: {
+      coverImage: 'https://images.unsplash.com/photo-1559925393-8be0ec4767c8?auto=format&fit=crop&w=1200&q=80',
+      gallery: [
+        'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=800&q=80',
+      ],
+    },
+    
+    curation: {
+      editorRating: 9.1,
+      editorNotes: 'A truly unique dining experience inside a volcanic cave. The natural acoustics and atmosphere are magical.',
+      perfectFor: ['Unique Experience', 'Romantic Dinner', 'Adventure', 'Cultural Visit'],
+      awards: ['Most Unique Restaurant 2024'],
+      featured: true,
+      featuredUntil: '2026-09-30',
+    },
+    
+    seo: {
+      metaTitle: 'La Cueva - Volcanic Cave Dining in Jameos del Agua',
+      metaDescription: 'Dine inside a natural volcanic cave at La Cueva restaurant in the stunning Jameos del Agua attraction.',
+      keywords: ['volcanic cave', 'Jameos del Agua', 'unique dining', 'cave restaurant'],
+      ogImage: 'https://images.unsplash.com/photo-1559925393-8be0ec4767c8?auto=format&fit=crop&w=1200&q=80',
+    },
+    
+    metadata: {
+      createdAt: '2026-03-25T12:00:00Z',
+      updatedAt: '2026-03-25T12:00:00Z',
+      published: true,
+      views: 892,
+      saves: 56,
+    },
+  },
+  
+  {
+    id: 'bahia-restaurant',
+    slug: 'bahia-restaurant',
+    name: 'Bahía Restaurant',
+    tagline: 'Beachfront dining in Playa Blanca',
+    description: 'Elegant beachfront restaurant serving fresh seafood with direct access to Playa Blanca beach.',
+    
+    contact: {
+      address: 'Paseo Marítimo, 35580 Playa Blanca, Las Palmas',
+      coordinates: { lat: 28.864, lng: -13.827 },
+      phone: '+34 928 51 78 90',
+      website: 'https://www.bahiarestaurant.com',
+      email: 'info@bahiarestaurant.com',
+    },
+    
+    details: {
+      cuisine: ['Seafood', 'Mediterranean', 'Grill', 'Canarian'],
+      priceRange: '€€ (Moderate)',
+      ambiance: ['Beachfront', 'Relaxed', 'Family Friendly', 'Sunset Views'],
+      features: ['Beach Access', 'Sunset Terrace', 'Fresh Seafood', 'Live Music Weekends'],
+      dietary: ['Vegetarian Options', 'Gluten-Free Options'],
+      capacity: 120,
+      parking: true,
+      wifi: true,
+      terrace: true,
+      heating: true,
+      ac: true,
+    },
+    
+    hours: {
+      monday: '12:00-23:00',
+      tuesday: '12:00-23:00',
+      wednesday: '12:00-23:00',
+      thursday: '12:00-23:00',
+      friday: '12:00-00:00',
+      saturday: '12:00-00:00',
+      sunday: '12:00-23:00',
+      notes: 'Best sunset views from 18:00-20:00, live music Fridays and Saturdays',
+    },
+    
+    media: {
+      coverImage: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80',
+      gallery: [
+        'https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=800&q=80',
+      ],
+    },
+    
+    curation: {
+      editorRating: 8.3,
+      editorNotes: 'Perfect for a relaxed beachfront meal with excellent seafood and sunset views.',
+      perfectFor: ['Beach Dining', 'Family Lunch', 'Sunset Views', 'Casual Dinner'],
+      awards: ['Best Beach Restaurant 2023'],
+      featured: false,
+    },
+    
+    seo: {
+      metaTitle: 'Bahía Restaurant - Beachfront Dining in Playa Blanca',
+      metaDescription: 'Enjoy fresh seafood and sunset views at Bahía Restaurant, located directly on Playa Blanca beach.',
+      keywords: ['beachfront restaurant', 'Playa Blanca', 'seafood', 'sunset dining'],
+      ogImage: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80',
+    },
+    
+    metadata: {
+      createdAt: '2026-03-25T13:00:00Z',
+      updatedAt: '2026-03-25T13:00:00Z',
+      published: true,
+      views: 734,
+      saves: 41,
+    },
+  },
 ];
 
 // Helper functions

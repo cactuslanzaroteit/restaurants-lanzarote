@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { Star, MapPin, Clock, Euro, Heart, ExternalLink, ChevronRight } from 'lucide-react'
 import { useState } from 'react'
 import { restaurants, getFeaturedRestaurants, Restaurant } from '@/lib/data'
+import { useFavorites } from '@/lib/favorites'
 
 const categories = [
   { id: 'all', label: 'All Restaurants', count: restaurants.length },
@@ -18,13 +19,7 @@ const categories = [
 
 export function RestaurantGrid() {
   const [selectedCategory, setSelectedCategory] = useState('all')
-  const [favorites, setFavorites] = useState<string[]>([])
-
-  const toggleFavorite = (id: string) => {
-    setFavorites(prev =>
-      prev.includes(id) ? prev.filter(fav => fav !== id) : [...prev, id]
-    )
-  }
+  const { favorites, toggleFavorite, isFavorite } = useFavorites()
 
   const filteredRestaurants = selectedCategory === 'all' 
     ? restaurants 
@@ -121,7 +116,7 @@ export function RestaurantGrid() {
                   >
                     <Heart
                       className={`h-5 w-5 ${
-                        favorites.includes(restaurant.id)
+                        isFavorite(restaurant.id)
                           ? 'fill-red-500 text-red-500'
                           : 'text-gray-400'
                       }`}
