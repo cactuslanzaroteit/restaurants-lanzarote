@@ -4,103 +4,16 @@ import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { Star, MapPin, Clock, Euro, Heart, ExternalLink, ChevronRight } from 'lucide-react'
 import { useState } from 'react'
-
-// Mock data based on PRODUCT_DEFINITION.md schema
-const mockRestaurants = [
-  {
-    id: 'el-diablo',
-    slug: 'el-diablo-restaurant',
-    name: 'El Diablo Restaurant',
-    tagline: 'Dining over a volcanic grill',
-    description: 'Located in Timanfaya National Park, this unique restaurant cooks food using geothermal heat from the volcano.',
-    cuisine: ['Canarian', 'Grill', 'Seafood'],
-    priceRange: '€€€',
-    ambiance: ['Romantic', 'Unique Experience', 'Scenic Views'],
-    location: 'Timanfaya National Park',
-    editorRating: 9.2,
-    coverImage: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80',
-    featured: true,
-  },
-  {
-    id: 'la-casa-roja',
-    slug: 'la-casa-roja',
-    name: 'La Casa Roja',
-    tagline: 'Authentic Canarian cuisine',
-    description: 'Family-run restaurant serving traditional Canarian dishes in a charming red house with ocean views.',
-    cuisine: ['Canarian', 'Traditional', 'Seafood'],
-    priceRange: '€€',
-    ambiance: ['Family Friendly', 'Ocean View', 'Traditional'],
-    location: 'Arrecife',
-    editorRating: 8.7,
-    coverImage: 'https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=800&q=80',
-    featured: true,
-  },
-  {
-    id: 'bodega-el-grifo',
-    slug: 'bodega-el-grifo',
-    name: 'Bodega El Grifo',
-    tagline: 'Lanzarote\'s oldest winery',
-    description: 'Historic winery with restaurant serving volcanic wine pairings and local specialties.',
-    cuisine: ['Canarian', 'Wine Bar', 'Tapas'],
-    priceRange: '€€',
-    ambiance: ['Historic', 'Wine Cellar', 'Rustic'],
-    location: 'La Geria',
-    editorRating: 8.9,
-    coverImage: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=800&q=80',
-    featured: false,
-  },
-  {
-    id: 'mirador-del-rio',
-    slug: 'mirador-del-rio',
-    name: 'Mirador del Río',
-    tagline: 'Cliff-top dining with panoramic views',
-    description: 'Spectacular restaurant perched on cliffs with 360-degree views of the ocean and neighboring islands.',
-    cuisine: ['Mediterranean', 'Seafood', 'Fine Dining'],
-    priceRange: '€€€',
-    ambiance: ['Scenic Views', 'Romantic', 'Luxury'],
-    location: 'North Coast',
-    editorRating: 9.4,
-    coverImage: 'https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=800&q=80',
-    featured: true,
-  },
-  {
-    id: 'el-novo',
-    slug: 'el-novo',
-    name: 'El Novo',
-    tagline: 'Modern Canarian fusion',
-    description: 'Innovative restaurant blending traditional Canarian ingredients with contemporary techniques.',
-    cuisine: ['Fusion', 'Modern', 'Creative'],
-    priceRange: '€€€',
-    ambiance: ['Modern', 'Sophisticated', 'Trendy'],
-    location: 'Puerto del Carmen',
-    editorRating: 8.5,
-    coverImage: 'https://images.unsplash.com/photo-1578474846511-04ba529f0b88?auto=format&fit=crop&w=800&q=80',
-    featured: false,
-  },
-  {
-    id: 'la-cueva',
-    slug: 'la-cueva',
-    name: 'La Cueva',
-    tagline: 'Dining in a volcanic cave',
-    description: 'Unique restaurant built inside a natural volcanic cave, offering an unforgettable dining experience.',
-    cuisine: ['Canarian', 'Grill', 'Unique'],
-    priceRange: '€€€',
-    ambiance: ['Unique Experience', 'Romantic', 'Adventure'],
-    location: 'Jameos del Agua',
-    editorRating: 9.1,
-    coverImage: 'https://images.unsplash.com/photo-1559925393-8be0ec4767c8?auto=format&fit=crop&w=800&q=80',
-    featured: true,
-  },
-]
+import { restaurants, getFeaturedRestaurants, Restaurant } from '@/lib/data'
 
 const categories = [
-  { id: 'all', label: 'All Restaurants', count: 247 },
-  { id: 'featured', label: 'Editor\'s Picks', count: 42 },
-  { id: 'canarian', label: 'Canarian Cuisine', count: 89 },
-  { id: 'seafood', label: 'Seafood', count: 67 },
-  { id: 'fine-dining', label: 'Fine Dining', count: 34 },
-  { id: 'romantic', label: 'Romantic', count: 56 },
-  { id: 'views', label: 'Ocean Views', count: 48 },
+  { id: 'all', label: 'All Restaurants', count: restaurants.length },
+  { id: 'featured', label: 'Editor\'s Picks', count: getFeaturedRestaurants().length },
+  { id: 'canarian', label: 'Canarian Cuisine', count: restaurants.filter(r => r.details.cuisine.includes('Canarian')).length },
+  { id: 'seafood', label: 'Seafood', count: restaurants.filter(r => r.details.cuisine.includes('Seafood')).length },
+  { id: 'romantic', label: 'Romantic', count: restaurants.filter(r => r.details.ambiance.includes('Romantic')).length },
+  { id: 'family', label: 'Family Friendly', count: restaurants.filter(r => r.details.ambiance.includes('Family')).length },
+  { id: 'views', label: 'Ocean Views', count: restaurants.filter(r => r.details.ambiance.includes('Ocean View')).length },
 ]
 
 export function RestaurantGrid() {
@@ -114,10 +27,13 @@ export function RestaurantGrid() {
   }
 
   const filteredRestaurants = selectedCategory === 'all' 
-    ? mockRestaurants 
+    ? restaurants 
     : selectedCategory === 'featured'
-    ? mockRestaurants.filter(r => r.featured)
-    : mockRestaurants
+    ? getFeaturedRestaurants()
+    : restaurants.filter(r => 
+        r.details.cuisine.some(c => c.toLowerCase().includes(selectedCategory.toLowerCase())) ||
+        r.details.ambiance.some(a => a.toLowerCase().includes(selectedCategory.toLowerCase()))
+      )
 
   return (
     <section className="py-20">
@@ -126,20 +42,20 @@ export function RestaurantGrid() {
         <div className="mb-12">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
             <div>
-              <h2 className="font-display text-4xl md:text-5xl font-bold text-secondary-900 dark:text-white mb-4">
-                Curated <span className="text-gradient">Restaurants</span>
+              <h2 className="font-display text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+                Curated <span className="bg-gradient-to-r from-blue-600 to-orange-500 bg-clip-text text-transparent">Restaurants</span>
               </h2>
-              <p className="text-lg text-secondary-600 dark:text-secondary-400 max-w-2xl">
+              <p className="text-lg text-gray-600 max-w-2xl">
                 Hand-picked selection of Lanzarote's finest dining establishments, 
                 carefully curated by our local experts.
               </p>
             </div>
             <div className="flex items-center gap-4">
-              <button className="px-6 py-3 rounded-xl bg-primary-600 text-white hover:bg-primary-700 transition-colors flex items-center gap-2">
+              <button className="px-6 py-3 rounded-xl bg-blue-600 text-white hover:bg-blue-700 transition-colors flex items-center gap-2">
                 <span className="font-medium">View Map</span>
                 <ExternalLink className="h-4 w-4" />
               </button>
-              <button className="px-6 py-3 rounded-xl border border-secondary-300 dark:border-secondary-700 text-secondary-700 dark:text-secondary-300 hover:bg-secondary-50 dark:hover:bg-secondary-800 transition-colors flex items-center gap-2">
+              <button className="px-6 py-3 rounded-xl border border-gray-300 text-gray-700 hover:border-blue-500 hover:text-blue-600 transition-colors flex items-center gap-2">
                 <span className="font-medium">Filters</span>
                 <ChevronRight className="h-4 w-4" />
               </button>
@@ -154,8 +70,8 @@ export function RestaurantGrid() {
                 onClick={() => setSelectedCategory(category.id)}
                 className={`flex-shrink-0 px-4 py-2 rounded-full transition-all duration-300 ${
                   selectedCategory === category.id
-                    ? 'bg-gradient-to-r from-primary-500 to-accent-500 text-white shadow-glow'
-                    : 'bg-secondary-100 dark:bg-secondary-800 text-secondary-700 dark:text-secondary-300 hover:bg-secondary-200 dark:hover:bg-secondary-700'
+                    ? 'bg-gradient-to-r from-blue-500 to-orange-500 text-white shadow-lg'
+                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                 }`}
               >
                 <div className="flex items-center gap-2">
@@ -163,7 +79,7 @@ export function RestaurantGrid() {
                   <span className={`text-xs px-1.5 py-0.5 rounded-full ${
                     selectedCategory === category.id
                       ? 'bg-white/20'
-                      : 'bg-white dark:bg-secondary-700'
+                      : 'bg-white'
                   }`}>
                     {category.count}
                   </span>
@@ -183,11 +99,11 @@ export function RestaurantGrid() {
               transition={{ duration: 0.4, delay: index * 0.1 }}
             >
               <Link href={`/restaurants/${restaurant.slug}`}>
-                <div className="group relative overflow-hidden rounded-3xl bg-white dark:bg-secondary-900 border border-secondary-200 dark:border-secondary-800 hover:shadow-premium-lg transition-all duration-500 hover-lift">
+                <div className="group relative overflow-hidden rounded-3xl bg-white border border-gray-200 hover:shadow-2xl transition-all duration-500 hover:-translate-y-1">
                   {/* Featured Badge */}
-                  {restaurant.featured && (
+                  {restaurant.curation.featured && (
                     <div className="absolute top-4 left-4 z-10">
-                      <div className="px-3 py-1 rounded-full bg-gradient-to-r from-accent-500 to-primary-500 text-white text-xs font-semibold flex items-center gap-1">
+                      <div className="px-3 py-1 rounded-full bg-gradient-to-r from-orange-500 to-blue-500 text-white text-xs font-semibold flex items-center gap-1">
                         <Star className="h-3 w-3" />
                         <span>Editor's Pick</span>
                       </div>
@@ -201,13 +117,13 @@ export function RestaurantGrid() {
                       e.stopPropagation()
                       toggleFavorite(restaurant.id)
                     }}
-                    className="absolute top-4 right-4 z-10 p-2 rounded-full bg-white/80 dark:bg-secondary-800/80 backdrop-blur-sm hover:bg-white dark:hover:bg-secondary-700 transition-colors"
+                    className="absolute top-4 right-4 z-10 p-2 rounded-full bg-white/80 backdrop-blur-sm hover:bg-white transition-colors"
                   >
                     <Heart
                       className={`h-5 w-5 ${
                         favorites.includes(restaurant.id)
                           ? 'fill-red-500 text-red-500'
-                          : 'text-secondary-400'
+                          : 'text-gray-400'
                       }`}
                     />
                   </button>
@@ -215,25 +131,22 @@ export function RestaurantGrid() {
                   {/* Image */}
                   <div className="relative h-64 overflow-hidden">
                     <div 
-                      className="absolute inset-0 bg-gradient-to-b from-transparent to-black/50 z-10"
-                      style={{
-                        backgroundImage: `url(${restaurant.coverImage})`,
-                        backgroundSize: 'cover',
-                        backgroundPosition: 'center',
-                      }}
+                      className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
+                      style={{ backgroundImage: `url(${restaurant.media.coverImage})` }}
                     />
+                    <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/50 z-10" />
                     <div className="absolute bottom-4 left-4 right-4 z-20">
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-2">
                           <div className="flex items-center gap-1 bg-black/60 backdrop-blur-sm px-2 py-1 rounded-lg">
                             <Star className="h-4 w-4 text-yellow-400 fill-yellow-400" />
                             <span className="text-white font-semibold text-sm">
-                              {restaurant.editorRating}
+                              {restaurant.curation.editorRating}
                             </span>
                           </div>
                           <div className="bg-black/60 backdrop-blur-sm px-2 py-1 rounded-lg">
                             <span className="text-white font-semibold text-sm">
-                              {restaurant.priceRange}
+                              {restaurant.details.priceRange}
                             </span>
                           </div>
                         </div>
@@ -244,30 +157,30 @@ export function RestaurantGrid() {
                   {/* Content */}
                   <div className="p-6">
                     <div className="mb-4">
-                      <h3 className="font-display text-2xl font-bold text-secondary-900 dark:text-white mb-2 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
+                      <h3 className="text-2xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
                         {restaurant.name}
                       </h3>
-                      <p className="text-accent-600 dark:text-accent-400 font-medium mb-2">
+                      <p className="text-orange-600 font-medium mb-2">
                         {restaurant.tagline}
                       </p>
-                      <p className="text-secondary-600 dark:text-secondary-400 text-sm line-clamp-2">
+                      <p className="text-gray-600 text-sm line-clamp-2">
                         {restaurant.description}
                       </p>
                     </div>
 
                     <div className="space-y-3">
                       {/* Location */}
-                      <div className="flex items-center gap-2 text-secondary-600 dark:text-secondary-400">
+                      <div className="flex items-center gap-2 text-gray-600">
                         <MapPin className="h-4 w-4" />
-                        <span className="text-sm">{restaurant.location}</span>
+                        <span className="text-sm">{restaurant.contact.address.split(',')[0]}</span>
                       </div>
 
                       {/* Cuisine Tags */}
                       <div className="flex flex-wrap gap-2">
-                        {restaurant.cuisine.map((cuisine) => (
+                        {restaurant.details.cuisine.slice(0, 3).map((cuisine) => (
                           <span
                             key={cuisine}
-                            className="px-2 py-1 rounded-lg bg-secondary-100 dark:bg-secondary-800 text-secondary-700 dark:text-secondary-300 text-xs font-medium"
+                            className="px-2 py-1 rounded-lg bg-gray-100 text-gray-700 text-xs font-medium"
                           >
                             {cuisine}
                           </span>
@@ -276,10 +189,10 @@ export function RestaurantGrid() {
 
                       {/* Ambiance Tags */}
                       <div className="flex flex-wrap gap-2">
-                        {restaurant.ambiance.map((ambiance) => (
+                        {restaurant.details.ambiance.slice(0, 2).map((ambiance) => (
                           <span
                             key={ambiance}
-                            className="px-2 py-1 rounded-lg bg-primary-50 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 text-xs font-medium"
+                            className="px-2 py-1 rounded-lg bg-blue-50 text-blue-700 text-xs font-medium"
                           >
                             {ambiance}
                           </span>
@@ -288,12 +201,12 @@ export function RestaurantGrid() {
                     </div>
 
                     {/* View Details */}
-                    <div className="mt-6 pt-6 border-t border-secondary-100 dark:border-secondary-800">
+                    <div className="mt-6 pt-6 border-t border-gray-100">
                       <div className="flex items-center justify-between">
-                        <span className="text-sm text-secondary-500 dark:text-secondary-500">
+                        <span className="text-sm text-gray-500">
                           View details
                         </span>
-                        <ChevronRight className="h-4 w-4 text-secondary-400 group-hover:text-primary-500 group-hover:translate-x-1 transition-all" />
+                        <ChevronRight className="h-4 w-4 text-gray-400 group-hover:text-blue-500 group-hover:translate-x-1 transition-all" />
                       </div>
                     </div>
                   </div>
@@ -305,7 +218,7 @@ export function RestaurantGrid() {
 
         {/* Load More */}
         <div className="mt-12 text-center">
-          <button className="group px-8 py-4 rounded-2xl border-2 border-secondary-300 dark:border-secondary-700 text-secondary-700 dark:text-secondary-300 hover:border-primary-500 hover:text-primary-600 dark:hover:text-primary-400 transition-all duration-300 flex items-center gap-3 mx-auto">
+          <button className="group px-8 py-4 rounded-2xl border-2 border-gray-300 text-gray-700 hover:border-blue-500 hover:text-blue-600 transition-all duration-300 flex items-center gap-3 mx-auto">
             <span className="text-lg font-semibold">Load More Restaurants</span>
             <ChevronRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
           </button>
