@@ -1,0 +1,29 @@
+{
+  "name": "restaurants-in-lanzarote",
+  "version": "1.0.0",
+  "description": "Premium curated dining guide for Lanzarote, Canary Islands",
+  "private": true,
+  "workspaces": [
+    "website"
+  ],
+  "scripts": {
+    "dev": "cd website && npm run dev",
+    "build": "cd website && npm run build",
+    "start": "cd website && npm start"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Fred331code/restaurants-in-lanzarote.git"
+  },
+  "keywords": [
+    "restaurants",
+    "lanzarote",
+    "dining",
+    "guide"
+  ],
+  "author": "Fred331code",
+  "license": "UNLICENSED"
+}
