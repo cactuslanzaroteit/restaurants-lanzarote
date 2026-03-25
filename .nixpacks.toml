@@ -1,11 +1,11 @@
 [phases.setup]
-cmds = ["npm ci"]
+cmds = ["cd website && npm ci"]
 
 [phases.build]
-cmds = ["npm run build"]
+cmds = ["cd website && npm run build"]
 
 [start]
-cmd = "npm start"
+cmd = "cd website && npm start"
 
 [build.args]
 NODE_VERSION = "18"
@@ -21,6 +21,6 @@ apt = ["curl", "git"]
 node = "18"
 
 [build.node]
-install-cmd = "npm ci"
-build-cmd = "npm run build"
-start-cmd = "npm start"
+install-cmd = "cd website && npm ci"
+build-cmd = "cd website && npm run build"
+start-cmd = "cd website && npm start"
